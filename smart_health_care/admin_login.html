@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 80%;
+            max-width: 1200px;
+        }
+
+        /* Left Section */
+        .left-section {
+            text-align: center;
+            color: white;
+        }
+
+        .left-section i {
+            font-size: 70px;
+            margin-bottom: 10px;
+        }
+
+        /* Login Box */
+        .login-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 320px;
+        }
+
+        .login-box i {
+            font-size: 40px;
+            color: #6a11cb;
+            margin-bottom: 10px;
+        }
+
+        .login-box h2 {
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .login-box label {
+            display: block;
+            text-align: left;
+            font-size: 14px;
+            margin: 8px 0 4px;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 10px;
+            background: #6a11cb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .login-box button:hover {
+            background: #2575fc;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .links a {
+            color: #6a11cb;
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Left Section -->
+        <div class="left-section">
+            <i class="fas fa-user-shield"></i>
+            <h2>Admin Portal</h2>
+        </div>
+
+        <!-- Right Section (Login Form) -->
+        <div class="login-box">
+            <i class="fas fa-hospital-user"></i>
+            <h2>Admin Login</h2>
+            <form action="./admin_adddoctor.html">
+                <label><b>Email-ID:</b></label>
+                <input type="email" placeholder="admin@123" required>
+
+                <label><b>Password:</b></label>
+                <input type="password" placeholder="********" required>
+
+                <button type="submit">Login</button>
+                <div class="links">
+                    <a href="#">Forgot Password?</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

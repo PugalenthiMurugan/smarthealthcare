@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Doctor List</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(90deg, #b186de, #1f51a7);
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background: #333;
+      color: white;
+      padding-top: 20px;
+      position: fixed;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      padding: 15px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background: #575757;
+    }
+
+    .container {
+      margin-left: 270px;
+      padding: 20px;
+      width: calc(100% - 270px);
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-right: 20px;
+      margin-top: 5%;
+    }
+
+    .table {
+      width: 100%;
+    }
+
+    input.form-control {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sidebar">
+    <a href="./patientprofile.html" onclick="showSection(event, 'view-profile')">View Profile</a>
+    <a href="./appoinment.html">Book Appointment</a>
+    <a href="./app_status.html">Appointment Status</a>
+    <a href="doc_list.html" class="active">View Doctors List</a>
+    <a href="./homepage.html">Log Out</a>
+  </div>
+  <div class="container">
+    <h3 class="text-center"><b><u>LIST OF DOCTORS AND THEIR DEPARTMENT</u></b></h3>
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    <br>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Name of Doctor</th>
+            <th>Department</th>
+            <th>Consultant Fee</th>
+          </tr>
+        </thead>
+        <tbody id="myTable">
+          <tr>
+            <td>Dr. John Smith</td>
+            <td>Cardiology</td>
+            <td>$100</td>
+          </tr>
+          <tr>
+            <td>Dr. Mary Johnson</td>
+            <td>Neurology</td>
+            <td>$120</td>
+          </tr>
+          <tr>
+            <td>Dr. July Williams</td>
+            <td>Orthopedics</td>
+            <td>$90</td>
+          </tr>
+          <tr>
+            <td>Dr. Anja Ravendale</td>
+            <td>Pediatrics</td>
+            <td>$80</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $("#myInput").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function () {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

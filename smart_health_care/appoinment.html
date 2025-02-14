@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Book Appointment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, #b186de, #1f51a7);
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #333;
+            color: white;
+            padding-top: 20px;
+            position: fixed;
+        }
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #575757;
+        }
+        .container {
+            margin-left: 370px;
+            margin-right: 30px;
+            margin-top: 25px;
+            padding: 20px;
+            
+            width: calc(90% - 370px);
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        label {
+            display: block;
+            text-align: left;
+            font-weight: bold;
+            margin: 10px 0 5px;
+        }
+        select, input {
+            width: 80%;
+            padding: 8px;
+            margin-left: 12%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .book {
+            background: #007bff;
+            color: white;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="./patientprofile.html" onclick="showSection(event, 'view-profile')">View Profile</a>
+        <a href="./appointment.html" class="active">Book Appointment</a>
+        <a href="./app_status.html">Appointment Status</a>
+        <a href="doc_list.html">View Doctors List</a>
+        <a href="./homepage.html">Log Out</a>
+    </div>
+    
+    <div class="container">
+        <h2>Patient Book Appointment</h2>
+        <form>
+            <label>Patient Name <span style="color: red;">*</span>:</label>
+            <input type="text" placeholder="Enter your name" required>
+
+            <label>Select Department:</label>
+            <select required>
+                <option value="">Select</option>
+                <option value="cardiology">Cardiology</option>
+                <option value="neurology">Neurology</option>
+            </select>
+
+            <label>Select Doctor Name <span style="color: red;">*</span>:</label>
+            <select required>
+                <option value="">Select</option>
+                <option value="dr-smith">Dr. Smith</option>
+                <option value="dr-johnson">Dr. Johnson</option>
+            </select>
+
+            <label>Consultant Fee:</label>
+            <input type="text" placeholder="Enter Fee" required>
+
+            <label>Date <span style="color: red;">*</span>:</label>
+            <input type="date" required>
+
+            <div class="buttons">
+                <button type="submit" class="book">Book Appointment</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

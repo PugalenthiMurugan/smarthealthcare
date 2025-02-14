@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Doctors</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, #b186de, #1f51a7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            padding: 20px;
+            /* margin: 10px; */
+            margin-top: 30px;
+        }
+
+        .sidebar { 
+            width: 220px;
+            background-color: #333;
+            position: fixed;
+            height: 100%;
+            padding-top: 20px;
+            left: 0;
+            top: 0;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .sidebar a.active {
+            background: #444;
+        }
+
+        .content {
+            margin-left: 180px;
+            width: calc(80% - 180px);
+            background-color: white;
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            /* max-width: 700px; */
+        }
+
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            width: 100%;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: calc(50% - 5px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-group.full-width input,
+        .form-group.full-width select,
+        .form-group.full-width textarea {
+            width: 100%;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 30px;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            background: #6a11cb;
+            color: white;
+            text-align: center;
+            width: 100%;
+            margin-top: 8px;
+            margin-bottom: 0px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="./admin_adddoctor.html">Admin Add Doctor</a>
+        <a href="./admin_updatedoctor.html" class="active">Update Doctors</a>
+        <a href="./admin_record.html">Records</a>
+        <a href="./admin_login.html">Log out</a>
+        
+    </div>
+    <div class="content">
+        <h2>Update Doctor Information</h2>
+        <form action="/update-doctor" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
+                <input type="email" id="email" name="email" placeholder="Email Address" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="form-group full-width">
+                <label for="specialization">Specialization</label>
+                <select id="specialization" name="specialization" required>
+                    <option value="general_practitioner">General Practitioner</option>
+                    <option value="cardiologist">Cardiologist</option>
+                    <option value="dermatologist">Dermatologist</option>
+                    <option value="orthopedic">Orthopedic</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="number" id="experience" name="experience" placeholder="Years of Experience" required>
+                <input type="text" id="licenseNumber" name="licenseNumber" placeholder="License Number" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="licenseAuthority" name="licenseAuthority" placeholder="License Issuing Authority" required>
+                <input type="date" id="licenseExpiryDate" name="licenseExpiryDate" required>
+            </div>
+            <div class="form-group full-width">
+                <label for="qualification">Qualification</label>
+                <textarea id="qualification" name="qualification" required></textarea>
+            </div>
+            <div class="form-group full-width">
+                <input type="text" id="workingHours" name="workingHours" placeholder="Working Hours" required>
+            </div>
+            <div class="form-group full-width">
+                <button type="submit">Update Doctor</button>
+                <button type="button" onclick="window.history.back()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

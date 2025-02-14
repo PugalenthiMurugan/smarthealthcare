@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Description</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, #b186de, #1f51a7);
+            display: flex;
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            position: fixed;
+            height: 100%;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .sidebar a.active {
+            background: #444;
+        }
+
+        .content {
+            margin-left: 370px;
+            margin-right: 25px;
+            width: 60%;
+            /* max-width: 900px; */
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 90%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: center;
+            /* margin-top: 10px; */
+            /* border: 1px solid #ddd; */
+        }
+
+        th {
+            /* background-color: #f0f0f0; */
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 90%;
+            padding: 10px;
+            margin-top: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+        .button {
+            margin-top: 0;
+            width: 40%;
+            padding: 10px;
+            background: #6a11cb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .links a {
+            color: #6a11cb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <a href="./docprofile.html">View Profile</a>
+        <a href="./docviewappt.html">Doctor Appointments</a>
+        <a href="./doc_descripttion.html" class="active">Doctor description</a>
+        <a href="./doctor_login.html">Log Out</a>
+
+    </div>
+
+    <div class="content">
+        <h3><label for="id">Patient ID: <input type="text" id="id"></label></h3>
+        <table>
+            <tr>
+                <th>Patient Name:</th>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <th>Treatment Name:</th>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <th>Prescription:</th>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <th>Remark:</th>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <th>Advice:</th>
+                <td><textarea cols="20" rows="6"></textarea></td>
+            </tr>
+            <tr>
+                <td style="text-align: center;" colspan="2">
+                    <input type="button" value="Edit Description" class="button" >
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
+
+</body>
+
+</html>

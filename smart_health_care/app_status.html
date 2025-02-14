@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Status</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+          font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, #b186de, #1f51a7);
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #333;
+            color: white;
+            padding-top: 20px;
+            position: fixed;
+        }
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #575757;
+        }
+        .container {
+            margin-left: 270px;
+            margin-top: 7%;
+            margin-right: 10px;
+            padding: 20px;
+            width: calc(100% - 270px);
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 15px;
+        }
+        caption {
+            color: black;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="./patientprofile.html" onclick="showSection(event, 'view-profile')">View Profile</a>
+        <a href="./appoinment.html">Book Appointment</a>
+        <a href="./app_status.html" class="active">Appointment Status</a>
+        <a href="doc_list.html">View Doctors List</a>
+        <a href="./homepage.html">Log Out</a>
+    </div>
+    
+    <div class="container">
+        <table>
+            <caption>Patient Booking Status</caption>
+            <tr>
+                <th>Patient ID</th>
+                <th>Doctor Name</th>
+                <th>Department</th>
+                <th>Consultant Fee</th>
+                <th>Status</th>
+                <th>Cancel</th>
+                <th>Payment</th>
+            </tr>
+            <tr>
+                <td>dil</td>
+                <td>barhana</td>
+                <td>ENT</td>
+                <td>200</td>
+                <td>Confirmed</td>
+                <td></td>
+                <td>Paid</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

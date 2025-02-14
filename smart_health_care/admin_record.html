@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors and Patients Records</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, #b186de, #1f51a7);
+            display: flex;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            margin-left: 270px;
+            width:75% ;
+            margin-right: 30px;
+            /* margin: 30px auto; */
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        button {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .edit-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .edit-btn:hover {
+            background-color: #45a049;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .action-btns {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .search-bar {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .filter-bar {
+            margin: 20px 0;
+        }
+
+        .filter-bar select {
+            padding: 10px;
+            margin-right: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        /* Responsive Design */
+        /* @media (max-width: 768px) {
+            table, th, td {
+                font-size: 14px;
+            }
+
+            .search-bar, .filter-bar select {
+                width: 100%;
+            }
+        } */
+        .sidebar { 
+            width: 220px;
+            background-color: #333;
+            position: fixed;
+            height: 100%;
+            padding-top: 20px;
+            left: 0;
+            top: 0;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .sidebar a.active {
+            background: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="./admin_adddoctor.html">Admin Add Doctor</a>
+        <a href="./admin_updatedoctor.html">Update Doctors</a>
+        <a href="./admin_record.html" class="active">Records</a>
+        <a href="./admin_login.html">Log out</a>
+    </div>
+
+    <div class="container">
+        <h1>Admin Records</h1>
+
+        <h2>Doctors History</h2>
+
+        <!-- Separate Search Bars for Doctors and Patients -->
+        <div style="margin-bottom: 20px;">
+            <input type="text" class="search-bar" id="doctorSearchInput" placeholder="Search Doctors by Name" onkeyup="searchDoctors()">
+            
+        </div>
+
+        <!-- Filters for Date, Month, Year -->
+        <div class="filter-bar">
+            <h3>Filter Records</h3>
+
+            <!-- Doctor Filters -->
+            <div>
+                <h4>Doctor Filters</h4>
+                <select id="doctorYearFilter" onchange="filterDoctors()">
+                    <option value="">Select Year</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                </select>
+                <select id="doctorMonthFilter" onchange="filterDoctors()">
+                    <option value="">Select Month</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+                <input type="date" id="doctorDateFilter" onchange="filterDoctors()">
+            </div>
+
+            <!-- Patient Filters -->
+           
+        </div>
+
+        <h2>Doctors List</h2>
+        <table id="doctorsTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Doctor ID</th>
+                    <th>Full Name</th>
+                    <th>Specialization</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Joining Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="doctorsTableBody">
+                <!-- Doctors Records will be injected here -->
+            </tbody>
+        </table>
+
+        <h2>Patients History</h2>
+
+        <div style="margin-bottom: 20px;">
+            
+            <input type="text" class="search-bar" id="patientSearchInput" placeholder="Search Patients by Name" onkeyup="searchPatients()">
+        </div>
+
+        <div style="margin-top: 20px;">
+            <h4>Patient Filters</h4>
+            <select id="patientYearFilter" onchange="filterPatients()">
+                <option value="">Select Year</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+            </select>
+            <select id="patientMonthFilter" onchange="filterPatients()">
+                <option value="">Select Month</option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+            </select>
+            <input type="date" id="patientDateFilter" onchange="filterPatients()">
+        </div>
+        <table id="patientsTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Patient ID</th>
+                    <th>Full Name</th>
+                    <th>Age</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Doctor Assigned</th>
+                    <th>Admission Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="patientsTableBody">
+                <!-- Patients Records will be injected here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Sample Data for Doctors and Patients (with Dates)
+        const doctorsData = [
+            { id: 'D101', name: 'Dr. Adam Smith', specialization: 'Cardiologist', phone: '+1234567890', email: 'adam.smith@example.com', joiningDate: '2022-06-15' },
+            { id: 'D102', name: 'Dr. Emily Taylor', specialization: 'Dermatologist', phone: '+1234567891', email: 'emily.taylor@example.com', joiningDate: '2021-12-20' },
+            { id: 'D103', name: 'Dr. Jack Wilson', specialization: 'Orthopedic', phone: '+1234567892', email: 'jack.wilson@example.com', joiningDate: '2023-01-25' },
+            { id: 'D104', name: 'Dr. Laura Green', specialization: 'General Practitioner', phone: '+1234567893', email: 'laura.green@example.com', joiningDate: '2023-04-10' },
+        ];
+
+        const patientsData = [
+            { id: 'P1001', name: 'John Doe', age: 32, phone: '+1234567890', email: 'johndoe@example.com', doctorAssigned: 'Dr. Adam Smith', admissionDate: '2022-06-15' },
+            { id: 'P1002', name: 'Jane Smith', age: 28, phone: '+1234567891', email: 'janesmith@example.com', doctorAssigned: 'Dr. Emily Taylor', admissionDate: '2021-12-20' },
+            { id: 'P1003', name: 'Emma Brown', age: 40, phone: '+1234567892', email: 'emmabrown@example.com', doctorAssigned: 'Dr. Jack Wilson', admissionDate: '2023-01-25' },
+            { id: 'P1004', name: 'Oliver White', age: 25, phone: '+1234567893', email: 'oliverwhite@example.com', doctorAssigned: 'Dr. Laura Green', admissionDate: '2023-04-10' },
+        ];
+
+        // Function to load doctors data into the table
+        function loadDoctorsData(filteredDoctorsData = doctorsData) {
+            const tableBody = document.getElementById('doctorsTableBody');
+            tableBody.innerHTML = '';  // Clear existing rows
+
+            filteredDoctorsData.forEach((doctor, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${doctor.id}</td>
+                    <td>${doctor.name}</td>
+                    <td>${doctor.specialization}</td>
+                    <td>${doctor.phone}</td>
+                    <td>${doctor.email}</td>
+                    <td>${doctor.joiningDate}</td>
+                    <td class="action-btns">
+                        <button class="edit-btn" onclick="editDoctor(${index})">Edit</button>
+                        <button class="delete-btn" onclick="deleteDoctor(${index})">Delete</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Function to load patients data into the table
+        function loadPatientsData(filteredPatientsData = patientsData) {
+            const tableBody = document.getElementById('patientsTableBody');
+            tableBody.innerHTML = '';  // Clear existing rows
+
+            filteredPatientsData.forEach((patient, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${patient.id}</td>
+                    <td>${patient.name}</td>
+                    <td>${patient.age}</td>
+                    <td>${patient.phone}</td>
+                    <td>${patient.email}</td>
+                    <td>${patient.doctorAssigned}</td>
+                    <td>${patient.admissionDate}</td>
+                    <td class="action-btns">
+                        <button class="edit-btn" onclick="editPatient(${index})">Edit</button>
+                        <button class="delete-btn" onclick="deletePatient(${index})">Delete</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Filter Function for Doctors
+        function filterDoctors() {
+            const year = document.getElementById('doctorYearFilter').value;
+            const month = document.getElementById('doctorMonthFilter').value;
+            const date = document.getElementById('doctorDateFilter').value;
+
+            let filteredData = doctorsData;
+
+            if (year) {
+                filteredData = filteredData.filter(doctor => doctor.joiningDate.includes(year));
+            }
+            if (month) {
+                filteredData = filteredData.filter(doctor => new Date(doctor.joiningDate).toLocaleString('default', { month: 'long' }) === month);
+            }
+            if (date) {
+                filteredData = filteredData.filter(doctor => doctor.joiningDate === date);
+            }
+
+            loadDoctorsData(filteredData);
+        }
+
+        // Filter Function for Patients
+        function filterPatients() {
+            const year = document.getElementById('patientYearFilter').value;
+            const month = document.getElementById('patientMonthFilter').value;
+            const date = document.getElementById('patientDateFilter').value;
+
+            let filteredData = patientsData;
+
+            if (year) {
+                filteredData = filteredData.filter(patient => patient.admissionDate.includes(year));
+            }
+            if (month) {
+                filteredData = filteredData.filter(patient => new Date(patient.admissionDate).toLocaleString('default', { month: 'long' }) === month);
+            }
+            if (date) {
+                filteredData = filteredData.filter(patient => patient.admissionDate === date);
+            }
+
+            loadPatientsData(filteredData);
+        }
+
+        // Initial Load of Doctors and Patients Data
+        loadDoctorsData();
+        loadPatientsData();
+    </script>
+
+</body>
+</html>
